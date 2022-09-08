@@ -33,16 +33,14 @@ class BaseObject {
    * Helper for processing items on `responseMap`s that are objects.
    *
    * @private
-   * @param {object} options.data
+   * @param {object} options The object containing the function parameters
+   * @param {object} options.data The data to be parsed onto the instance.
    * @param {BaseObject} options.instance The instance to populate. This instance will be mutated.
    * @param {object} options.constructorParams Params to be passed to the instance's constructor.
    * Useful for passing parent data, such as `leagueId`.
-   * @param options.data.data
-   * @param options.data.constructorParams
-   * @param options.data.instance
-   * @param options.data.value
    * @param {string} options.value The value of the responseMap entry being parsed.
-   * @returns {*}
+   * @returns {*} The result of the parsing. Will Throw an Error if the value does not have
+   * a manualParse function or BaseObject.
    */
   static _processObjectValue({
     data, constructorParams, instance, value
@@ -76,19 +74,14 @@ class BaseObject {
    * used by other methods. See {@link ResponseMapValueObject} for `responseMap` documentation.
    *
    * @private
-   * @param {object} options.data
+   * @param {object} options The object containing the function parameters
+   * @param {object} options.data The data to be parsed onto the instance.
    * @param {BaseObject} options.instance The instance to populate. This instance will be mutated.
    * @param {object} options.constructorParams Params to be passed to the instance's constructor.
    * Useful for passing parent data, such as `leagueId`.
    * @param {boolean} options.isDataFromServer When true, the data came from the ESPN API over the
    * wire. When false, the data came locally.
    * @param {string} options.key The key of the responseMap entry being parsed.
-   * @param options.data.data
-   * @param options.data.constructorParams
-   * @param options.data.instance
-   * @param options.data.isDataFromServer
-   * @param options.data.key
-   * @param options.data.value
    * @param {string} options.value The value of the responseMap entry being parsed.
    */
   static _processResponseMapItem({
@@ -166,12 +159,10 @@ class BaseObject {
    * attributes defined in the value of responseMap to the matching key.
    *
    * @private
-   * @param {object} options.data The data to map onto the passed instance.
+   * @param {object} options The object containing the function parameters
+   * @param {object} options.data The data to be parsed onto the instance.
    * @param {BaseObject} options.instance The instance to populate. This instance will be mutated.
-   * @param options.data.data
-   * @param options.data.constructorParams
-   * @param options.data.instance
-   * @param options.data.isDataFromServer
+   * @param {object} options.constructorParams Params to be passed to the instance's constructor.
    * @param {boolean} options.isDataFromServer When true, the data came from ESPN. When false, the
    * data came locally.
    * @returns {BaseObject} The mutated BaseObject instance.
